@@ -4,7 +4,7 @@
   "description": "Biblioteca para calcular média e aprovação de disciplinas universitárias",
   "main": "dist/index.js",
   "scripts": {
-    "build": "babel src -D -d dist --ignore node_modules",
+    "build": "babel src -D -d dist --ignore node_modules,tests",
     "lint": "eslint src test",
     "lint:staged": "lint-staged",
     "prepublish": "npm run build",
@@ -13,6 +13,9 @@
   "files": [
     "dist/"
   ],
+  "babel": {
+    "presets": ["es2015", "stage-0"]
+  },
   "lint-staged": {
     "*.js": "lint"
   },
