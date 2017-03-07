@@ -30,21 +30,19 @@ export default {
       return ((g1 + g2 + g3 + (g4 * 3)) / 6).toFixed(1) / 1;
     }
 
-    const menorNota = _.chain(notas)
+    const menorNota = _(notas)
       .pick(['g1', 'g2', 'g3'])
       .toPairs()
       // transforma [['g1', 5],['g2', 6]] em [{ key: 'g1', val: 5 }, { key: 'g2', val: 6 }]
       .map(([key, val]) => ({ key, val }))
       // seleciona a nota com o menor 'val'
       .minBy('val')
-      .value()
       .key;
 
-    const somaDasMaiores = _.chain(notas)
+    const somaDasMaiores = _(notas)
       .pick(['g1', 'g2', 'g3'])
       .omit(menorNota)
       .reduce((acc, n) => acc + n, 0)
-      .value();
 
     return ((somaDasMaiores + g4) / 3).toFixed(1) / 1;
   },
